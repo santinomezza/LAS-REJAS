@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Las Rejas — Catamarca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-logo">Las <span>Rejas</span></div>
+        <ul class="nav-links">
+            <li><a href="#deportes">Deportes</a></li>
+            <li><a href="#turnos">Turnos</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#colonia">Colonia</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#turnos" class="nav-cta">Reservar Turno</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-court"></div>
+        <div class="hero-content">
+            <div class="hero-badge">📍 Av. Enrique Ocampo Km 3 — Catamarca</div>
+            <h1 class="hero-title">Club<br><em>Las Rejas</em></h1>
+            <p class="hero-sub">Tu espacio de deporte, diversión y encuentro en el corazón de Catamarca. Pádel, tenis,
+                colonia de verano, gastronomía y eventos inolvidables.</p>
+            <div class="hero-btns">
+                <a href="#turnos" class="btn-primary">Reservar Turno</a>
+                <a href="#eventos" class="btn-outline">Ver Eventos</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">4</span>
+                <span class="stat-label">Canchas de Pádel</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">+10</span>
+                <span class="stat-label">Años de historia</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">+500</span>
+                <span class="stat-label">Socios activos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPORTES -->
+    <section id="deportes">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Nuestras instalaciones</span>
+                <h2 class="section-title">Todo lo que <em>necesitás</em></h2>
+                <p class="section-subtitle">Un complejo completo pensado para que cada visita sea una experiencia única.
+                </p>
+            </div>
+            <div class="sports-grid">
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap padel">🎾</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Pádel</div>
+                        <p class="sport-desc">4 canchas de pádel (1 techada), homologadas internacionalmente. Sede del
+                            FIP Rise Padel y torneos nacionales.</p>
+                        <button class="sport-link" onclick="scrollToTurnos('padel')">Reservar cancha →</button>
+                    </div>
+                </div>
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap tenis">🎾</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Tenis</div>
+                        <p class="sport-desc">Canchas de tenis en perfectas condiciones. Clases para todos los niveles y
+                            torneos internos durante todo el año.</p>
+                        <button class="sport-link" onclick="scrollToTurnos('tenis')">Reservar cancha →</button>
+                    </div>
+                </div>
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap colonia">☀️</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Colonia de Verano</div>
+                        <p class="sport-desc">Para chicos de 4 a 12 años. Natación, tenis, fútbol, manualidades y mucho
+                            más. Diciembre a febrero.</p>
+                        <button class="sport-link"
+                            onclick="document.getElementById('colonia').scrollIntoView({behavior:'smooth'})">Más info
+                            →</button>
+                    </div>
+                </div>
+                <div class="sport-card fade-in highlight">
+                    <div class="sport-icon-wrap napoles">🍕</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Nápoles Resto</div>
+                        <p class="sport-desc">Platos gourmet, coctelería de autor y el mejor ambiente de Catamarca para
+                            disfrutar antes o después del juego.</p>
+                        <div style="display:flex; gap:0.5rem; margin-top: 1rem;">
+                            <button class="sport-link" onclick="scrollToTurnos('napoles')">Reservar mesa →</button>
+                            <button class="sport-link" onclick="openCarta()" style="color:var(--dorado)">Ver Carta
+                                🍽️</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap eventos">🎊</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Eventos</div>
+                        <p class="sport-desc">Sunsets, fiestas temáticas, torneos deportivos y celebraciones privadas.
+                            Instalaciones de primer nivel con capacidad para +1200 personas.</p>
+                        <button class="sport-link"
+                            onclick="document.getElementById('eventos').scrollIntoView({behavior:'smooth'})">Ver eventos
+                            →</button>
+                    </div>
+                </div>
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap padel" style="background: linear-gradient(135deg, #1e6b35 0%, #27ae60 100%);">🎓</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Clases de Pádel</div>
+                        <p class="sport-desc">Academia para todos los niveles con profesores certificados. Perfeccioná tu técnica y táctica en el club.</p>
+                        <button class="sport-link" onclick="scrollToTurnos('clases_padel')">Reservar clase →</button>
+                    </div>
+                </div>
+                <div class="sport-card fade-in">
+                    <div class="sport-icon-wrap tenis" style="background: linear-gradient(135deg, #1e4d2b 0%, #2e7d32 100%);">🎓</div>
+                    <div class="sport-body">
+                        <div class="sport-name">Clases de Tenis</div>
+                        <p class="sport-desc">Escuela de tenis para niños y adultos. Formación integral y entrenamientos personalizados.</p>
+                        <button class="sport-link" onclick="scrollToTurnos('clases_tenis')">Reservar clase →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TURNOS -->
+    <section id="turnos">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Reservas online</span>
+                <h2 class="section-title">Agenda tu <em>turno</em></h2>
+                <p class="section-subtitle">Reservá tu cancha en segundos. Recibirás confirmación automática por
+                    WhatsApp.</p>
+            </div>
+            <div class="booking-layout fade-in">
+                <div class="booking-sidebar">
+                    <h3>¿Qué querés jugar?</h3>
+                    <div class="sport-selector">
+                        <button class="sport-btn active" onclick="selectSport(this, 'padel')">
+                            <span class="sport-btn-icon">🎾</span>
+                            <span class="sport-btn-name">Pádel</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'tenis')">
+                            <span class="sport-btn-icon">🎾</span>
+                            <span class="sport-btn-name">Tenis</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'natacion')">
+                            <span class="sport-btn-icon">🏊</span>
+                            <span class="sport-btn-name">Natación</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'futbol')">
+                            <span class="sport-btn-icon">⚽</span>
+                            <span class="sport-btn-name">Fútbol</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'clases_padel')">
+                            <span class="sport-btn-icon">🎓</span>
+                            <span class="sport-btn-name">Clases Pádel</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'clases_tenis')">
+                            <span class="sport-btn-icon">🎓</span>
+                            <span class="sport-btn-name">Clases Tenis</span>
+                        </button>
+                        <button class="sport-btn" onclick="selectSport(this, 'napoles')">
+                            <span class="sport-btn-icon">🍕</span>
+                            <span class="sport-btn-name">Nápoles Resto</span>
+                        </button>
+                    </div>
+                    <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.15);">
+                        <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-bottom:0.5rem;">📞 También
+                            podés llamar:</p>
+                        <p style="font-weight:700; color:var(--dorado); font-size:1.1rem;">3834 650101</p>
+                        <p style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.5rem;">Lun–Vie: 9 a 18:30
+                            hs</p>
+                    </div>
+                </div>
+                <div class="booking-main">
+                    <div class="booking-info-box" id="sport-info">
+                        <h4 id="sport-title">🎾 Pádel — Las Rejas Tennis Club</h4>
+                        <p id="sport-desc-txt">4 canchas disponibles (1 techada). Homologadas internacionalmente. Ideal
+                            para jugar con amigos o en torneos. Precio: $3.500/hora por cancha.</p>
+                    </div>
+
+                    <!-- Calendario semanal -->
+                    <div style="background:var(--crema); border-radius:12px; padding:1.5rem;">
+                        <div
+                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h4 style="font-family:'Playfair Display',serif; color:var(--verde); font-size:1.1rem;">
+                                Disponibilidad — Semana actual</h4>
+                            <div style="display:flex; gap:1rem; font-size:0.75rem; color:var(--gris);">
+                                <span>🟢 Libre</span>
+                                <span>🔴 Ocupado</span>
+                                <span>⭐ Seleccionado</span>
+                            </div>
+                        </div>
+                        <div class="calendar-wrapper">
+                            <div class="calendar-grid-header">
+                                <div></div>
+                                <div class="cal-day-header">Lun<br><small>31/3</small></div>
+                                <div class="cal-day-header">Mar<br><small>1/4</small></div>
+                                <div class="cal-day-header">Mié<br><small>2/4</small></div>
+                                <div class="cal-day-header">Jue<br><small>3/4</small></div>
+                                <div class="cal-day-header">Vie<br><small>4/4</small></div>
+                                <div class="cal-day-header">Sáb<br><small>5/4</small></div>
+                                <div class="cal-day-header">Dom<br><small>6/4</small></div>
+                            </div>
+                            <div class="calendar-grid" id="calendar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="booking-form" id="booking-form" style="display:none;">
+                        <h4>📋 Completá tus datos</h4>
+                        <div id="selected-slot-info"
+                            style="background:var(--crema); border-radius:8px; padding:1rem; margin-bottom:1.2rem; font-size:0.88rem; color:var(--verde); font-weight:600;">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre completo *</label>
+                                <input type="text" id="f-nombre" placeholder="Tu nombre" />
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp *</label>
+                                <input type="tel" id="f-tel" placeholder="3834 000000" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="f-email" placeholder="tu@email.com" />
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad de jugadores</label>
+                                <select id="f-jugadores">
+                                    <option>2 jugadores</option>
+                                    <option>4 jugadores</option>
+                                    <option>Clase individual</option>
+                                    <option>Clase grupal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Sección de Pago Dinámica -->
+                        <div id="payment-section" style="display:none; margin: 1.5rem 0; padding: 1.5rem; background: rgba(0,0,0,0.03); border-radius: 10px; border: 1px dashed rgba(0,0,0,0.1);">
+                        </div>
+                        <button class="btn-primary" onclick="confirmarReserva()" style="width:100%; margin-top:0.5rem;">
+                            ✅ Confirmar Reserva
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section id="eventos">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Agenda del club</span>
+                <h2 class="section-title" style="color:var(--crema);">Próximos <em
+                        style="color:var(--dorado)">Eventos</em></h2>
+                <p class="section-subtitle">Sunsets, fiestas y torneos. Siempre hay algo pasando en Las Rejas.</p>
+            </div>
+            <div class="eventos-grid">
+                <div class="evento-card fade-in">
+                    <div class="evento-bg sunset">🌅</div>
+                    <div class="evento-overlay">
+                        <span class="evento-tag">Próximo evento</span>
+                        <div class="evento-title">Sunset Las Rejas</div>
+                        <div class="evento-date">📅 Sábado 12 de Abril · 18:00 hs</div>
+                        <button class="evento-cta"
+                            onclick="openEventModal('Sunset Las Rejas', 'Sábado 12 de Abril · 18:00 hs', 'sunset')">Comprar
+                            entrada →</button>
+                    </div>
+                </div>
+                <div class="evento-card fade-in">
+                    <div class="evento-bg torneo">🏆</div>
+                    <div class="evento-overlay">
+                        <span class="evento-tag">Torneo</span>
+                        <div class="evento-title">Torneo Interno Pádel</div>
+                        <div class="evento-date">📅 Sábado 19 de Abril · 9:00 hs</div>
+                        <button class="evento-cta"
+                            onclick="openEventModal('Torneo Interno Pádel', 'Sábado 19 de Abril · 9:00 hs', 'torneo')">Inscribirse
+                            →</button>
+                    </div>
+                </div>
+                <div class="evento-card fade-in">
+                    <div class="evento-bg fiesta">🎊</div>
+                    <div class="evento-overlay">
+                        <span class="evento-tag">Fiesta</span>
+                        <div class="evento-title">Noche de Gala</div>
+                        <div class="evento-date">📅 Viernes 25 de Abril · 21:00 hs</div>
+                        <button class="evento-cta"
+                            onclick="openEventModal('Noche de Gala', 'Viernes 25 de Abril · 21:00 hs', 'fiesta')">Reservar
+                            lugar →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximos eventos lista -->
+            <div style="margin-top:3rem; background:rgba(255,255,255,0.05); border-radius:14px; padding:2rem;"
+                class="fade-in">
+                <h3
+                    style="font-family:'Playfair Display',serif; color:var(--dorado); margin-bottom:1.5rem; font-size:1.3rem;">
+                    📅 Calendario Completo</h3>
+                <div id="eventos-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLONIA -->
+    <section id="colonia">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Temporada de verano</span>
+                <h2 class="section-title">Colonia de <em style="color:#7ec8e3;">Vacaciones</em></h2>
+                <p class="section-subtitle">El mejor verano para tus hijos. Actividades, deporte y diversión de
+                    diciembre a febrero.</p>
+            </div>
+            <div class="colonia-grid fade-in">
+                <div class="colonia-info">
+                    <h3
+                        style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--crema); margin-bottom:1rem;">
+                        ¡La aventura del verano!</h3>
+                    <p style="color:rgba(245,240,232,0.7); line-height:1.8; font-size:0.95rem;">La Colonia de Verano de
+                        Las Rejas es el lugar donde los chicos de <strong style="color:white;">4 a 12 años</strong>
+                        viven su mejor temporada. Supervisión profesional, actividades variadas y un ambiente seguro y
+                        divertido.</p>
+                    <div class="colonia-features">
+                        <div class="colonia-feat">
+                            <div class="feat-icon">🏊</div>
+                            <div class="feat-name">Natación</div>
+                            <div class="feat-desc">Aprendizaje y recreación en la pileta del club</div>
+                        </div>
+                        <div class="colonia-feat">
+                            <div class="feat-icon">🎾</div>
+                            <div class="feat-name">Tenis</div>
+                            <div class="feat-desc">Iniciación y práctica con profes especializados</div>
+                        </div>
+                        <div class="colonia-feat">
+                            <div class="feat-icon">⚽</div>
+                            <div class="feat-name">Fútbol</div>
+                            <div class="feat-desc">Partidos y entrenamiento en canchas</div>
+                        </div>
+                        <div class="colonia-feat">
+                            <div class="feat-icon">🎨</div>
+                            <div class="feat-name">Manualidades</div>
+                            <div class="feat-desc">Talleres artísticos y creativos</div>
+                        </div>
+                        <div class="colonia-feat">
+                            <div class="feat-icon">🎮</div>
+                            <div class="feat-name">Actividades Recreativas</div>
+                            <div class="feat-desc">Juegos, dinámicas y entretenimiento</div>
+                        </div>
+                        <div class="colonia-feat">
+                            <div class="feat-icon">👥</div>
+                            <div class="feat-name">Equipo Profesional</div>
+                            <div class="feat-desc">Profes y animadores especializados</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="colonia-card">
+                    <h3>Inscripción Temporada 2025/26</h3>
+                    <p style="color:var(--gris); font-size:0.88rem; margin-bottom:1.5rem;">Seleccioná el turno que mejor
+                        se adapta a tu familia:</p>
+                    <div class="turno-option" onclick="selectTurno(this, 'mañana')">
+                        <div>
+                            <div class="turno-time">🌅 Turno Mañana</div>
+                            <div class="turno-label">10:00 a 13:00 hs · Lunes a Viernes</div>
+                        </div>
+                        <div class="turno-price">Consultar</div>
+                    </div>
+                    <div class="turno-option" onclick="selectTurno(this, 'siesta')">
+                        <div>
+                            <div class="turno-time">☀️ Turno Siesta</div>
+                            <div class="turno-label">15:00 a 18:00 hs · Lunes a Viernes</div>
+                        </div>
+                        <div class="turno-price">Consultar</div>
+                    </div>
+                    <div class="turno-option" onclick="selectTurno(this, 'tarde')">
+                        <div>
+                            <div class="turno-time">🌇 Turno Tarde</div>
+                            <div class="turno-label">18:00 a 21:00 hs · Lunes a Viernes</div>
+                        </div>
+                        <div class="turno-price">Consultar</div>
+                    </div>
+                    <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid #eee;">
+                        <p style="font-size:0.82rem; color:var(--gris); margin-bottom:0.5rem;">📅 Temporada:
+                            <strong>Diciembre 2025 — Febrero 2026</strong>
+                        </p>
+                        <p style="font-size:0.82rem; color:var(--gris); margin-bottom:1rem;">👦 Edad: <strong>4 a 12
+                                años</strong></p>
+                        <button class="btn-primary" style="width:100%;" onclick="inscribirColonia()">Inscribir a mi
+                            hijo/a →</button>
+                        <p style="font-size:0.75rem; color:var(--gris); text-align:center; margin-top:0.8rem;">💬 Te
+                            contactaremos por WhatsApp para confirmar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MODAL CARTA NAPOLES -->
+    <div id="modal-carta" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 0;">
+            <div
+                style="position: sticky; top: 0; background: var(--fondo); padding: 2rem; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; justify-content: space-between; align-items: center; z-index: 10;">
+                <h2 style="font-family: 'Playfair Display', serif; color: var(--dorado); margin: 0;">🍽️ Carta Nápoles
+                    Resto</h2>
+                <button onclick="closeModal('modal-carta')"
+                    style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div id="carta-body" style="padding: 2rem;">
+                <!-- Contenido de la carta -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Dónde encontrarnos</span>
+                <h2 class="section-title">Contacto & <em>Ubicación</em></h2>
+            </div>
+            <div class="contacto-grid fade-in">
+                <div class="contact-info">
+                    <h3>Estamos en Catamarca</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <strong>Dirección</strong>
+                            Av. Enrique Ocampo 3068 (Km 3)<br>
+                            San Fernando del Valle de Catamarca, Catamarca, Argentina
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <strong>Teléfono / WhatsApp</strong>
+                            <a href="https://wa.me/543834650101"
+                                style="color:var(--verde-medio); text-decoration:none;">3834 650101</a><br>
+                            <a href="tel:03834458496" style="color:var(--gris); font-size:0.85rem;">03834 458496</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-text">
+                            <strong>Horario de atención</strong>
+                            Lunes a Viernes: 9:00 a 18:30 hs<br>
+                            Sábados y Domingos: según disponibilidad
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <strong>Redes Sociales</strong>
+                            <a href="https://www.instagram.com/lasrejascluboficial/" target="_blank"
+                                style="color:var(--verde-medio); text-decoration:none;">@lasrejascluboficial</a> en
+                            Instagram
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="map-placeholder">
+                        <div class="map-icon">🗺️</div>
+                        <p><strong style="color:white; font-size:1.1rem;">Av. Enrique Ocampo 3068</strong><br>San
+                            Fernando del Valle de Catamarca</p>
+                        <a href="https://maps.google.com/?q=Las+Rejas+Tennis+Club+Catamarca" target="_blank"
+                            class="map-btn">
+                            📍 Abrir en Google Maps
+                        </a>
+                    </div>
+                    <div
+                        style="margin-top:1rem; background:white; border-radius:12px; padding:1.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                        <p style="font-size:0.85rem; color:var(--gris); margin-bottom:1rem; font-weight:600;">💬
+                            Escribinos por WhatsApp</p>
+                        <a href="https://wa.me/543834650101?text=Hola!%20Quiero%20obtener%20información%20sobre%20Las%20Rejas"
+                            target="_blank" class="whatsapp-btn"
+                            style="width:100%; justify-content:center; border-radius:8px; padding:0.85rem;">
+                            <span>💬</span> Chatear por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="nav-logo">Las <span>Rejas</span></div>
+                <p>Club deportivo y recreativo en el corazón de Catamarca. Pádel, tenis, colonia de verano, gastronomía
+                    y eventos.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/lasrejascluboficial/" target="_blank" class="social-link">📸</a>
+                    <a href="https://www.facebook.com/clublasrejas/" target="_blank" class="social-link">👍</a>
+                    <a href="https://wa.me/543834650101" target="_blank" class="social-link">💬</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Sistema</h5>
+                <ul>
+                    <li><a href="admin.html">🔐 Panel Admin</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Deportes</h5>
+                <ul>
+                    <li><a href="#turnos">Pádel</a></li>
+                    <li><a href="#turnos">Tenis</a></li>
+                    <li><a href="#colonia">Colonia de Verano</a></li>
+                    <li><a href="#deportes">Nápoles Resto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Club</h5>
+                <ul>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#eventos">Torneos</a></li>
+                    <li><a href="#deportes">Tienda</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contacto</h5>
+                <ul>
+                    <li><a href="tel:3834650101">📞 3834 650101</a></li>
+                    <li><a href="https://wa.me/543834650101" target="_blank">💬 WhatsApp</a></li>
+                    <li><a href="#">📍 Av. Ocampo Km 3</a></li>
+                    <li><a href="#">Catamarca, Argentina</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Club Las Rejas — San Fernando del Valle de Catamarca · Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- MODAL RESERVA -->
+    <div class="modal-overlay" id="modal-reserva">
+        <div class="modal">
+            <div class="modal-icon">✅</div>
+            <h3>¡Turno Reservado!</h3>
+            <p>Tu reserva fue registrada exitosamente. Te enviamos la confirmación por WhatsApp.</p>
+            <div class="modal-detail" id="modal-detail"></div>
+            <div class="modal-msg" id="modal-msg"></div>
+            <a id="modal-wa" href="#" target="_blank" class="whatsapp-btn">
+                💬 Confirmar por WhatsApp
+            </a>
+            <br><br>
+            <button onclick="closeModal('modal-reserva')"
+                style="background:none; border:none; color:var(--gris); cursor:pointer; font-size:0.85rem; text-decoration:underline;">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL EVENTOS -->
+    <div class="modal-overlay" id="modal-evento">
+        <div class="modal">
+            <div class="modal-icon" id="ev-icon">🌅</div>
+            <h3 id="ev-title">Sunset Las Rejas</h3>
+            <p id="ev-date-txt" style="color:var(--dorado); font-weight:600;"></p>
+            <p style="margin-top:0.8rem;">Para más información y reservas, contactanos directamente.</p>
+            <div class="modal-msg" id="ev-msg"></div>
+            <a id="ev-wa" href="#" target="_blank" class="whatsapp-btn" style="margin-top:1rem;">
+                💬 Consultar por WhatsApp
+            </a>
+            <br><br>
+            <button onclick="closeModal('modal-evento')"
+                style="background:none; border:none; color:var(--gris); cursor:pointer; font-size:0.85rem; text-decoration:underline;">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>
