@@ -1,0 +1,100 @@
+// ═══════════════════════════════════════════════
+// _modal.scss — Modales y overlays
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Overlay base ───
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  background: alpha(#000, 0.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+
+  &.show {
+    display: flex;
+  }
+}
+
+// ─── Modal contenido ───
+.modal {
+  background: white;
+  border-radius: $border-radius-xl;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  animation: modalPop 0.3s ease;
+
+  h3 {
+    @include font-display;
+    font-size: 1.6rem;
+    color: $verde;
+    margin-bottom: 0.8rem;
+  }
+
+  p {
+    color: $gris;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modal-detail {
+  background: $crema;
+  border-radius: $border-radius-md;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  text-align: left;
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  strong {
+    color: $verde;
+  }
+}
+
+.modal-msg {
+  background: #e8f5eb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  color: $verde;
+  border-left: 3px solid $verde-claro;
+}
+
+// ─── Toast de notificación ───
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: $z-toast;
+  background: $verde;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transform: translateX(120%);
+  transition: transform 0.4s ease;
+  max-width: 320px;
+
+  &.show {
+    transform: translateX(0);
+  }
+}

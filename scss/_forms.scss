@@ -1,0 +1,135 @@
+// ═══════════════════════════════════════════════
+// _forms.scss — Formularios y métodos de pago
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Fila de campos ───
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+// ─── Grupo de campo ───
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $negro;
+    letter-spacing: 0.03em;
+  }
+
+  input,
+  select {
+    padding: 0.7rem 1rem;
+    border-radius: 7px;
+    border: 1.5px solid #ddd;
+    font-size: 0.9rem;
+    font-family: $font-body;
+    background: $blanco;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $verde-claro;
+    }
+  }
+}
+
+// ─── Sección de pago ───
+#payment-section {
+  border: 1px solid alpha($verde, 0.1) !important;
+  background: white !important;
+  box-shadow: 0 4px 15px alpha(#000, 0.05);
+}
+
+.payment-calc {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.calc-item {
+  @include flex-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: $gris;
+
+  &.highlight {
+    color: $verde;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+}
+
+// ─── Métodos de pago ───
+.payment-methods p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: $verde;
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.method-card {
+  cursor: pointer;
+  position: relative;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.method-content {
+  @include flex-column-center;
+  padding: 1rem;
+  border: 2px solid #eee;
+  border-radius: $border-radius-md;
+  transition: $transition-mid;
+  background: #fdfdfd;
+}
+
+.method-card input:checked + .method-content {
+  border-color: $dorado;
+  background: alpha($dorado, 0.05);
+}
+
+.method-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.method-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $verde;
+}
+
+// ─── Info box de pago ───
+.payment-info-box {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid $dorado;
+  animation: fadeInPay 0.3s ease-out;
+
+  p {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.88rem;
+    color: $verde;
+  }
+}

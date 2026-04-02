@@ -1,0 +1,167 @@
+// ═══════════════════════════════════════════════
+// _cards.scss — Tarjetas de contenido
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Sport card ───
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.sport-card {
+  @include card-base(12px);
+
+  &.highlight {
+    border: 1.5px solid $dorado;
+    box-shadow: $shadow-gold;
+  }
+}
+
+// Icono/imagen de la tarjeta
+.sport-icon-wrap {
+  height: 140px;
+  @include flex-center;
+  font-size: 4rem;
+  position: relative;
+  overflow: hidden;
+
+  // Variantes por deporte
+  &.padel   { @include gradient-verde; }
+  &.tenis   { background: linear-gradient(135deg, #2c5f2e 0%, #4a8a55 100%); }
+  &.colonia { background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%); }
+  &.napoles { background: linear-gradient(135deg, #7b241c 0%, #c0392b 100%); }
+  &.eventos { background: linear-gradient(135deg, #6c3483 0%, #9b59b6 100%); }
+  &.tienda  { background: linear-gradient(135deg, #784212 0%, #ca6f1e 100%); }
+}
+
+.sport-body {
+  padding: 1.5rem;
+}
+
+.sport-name {
+  @include font-display;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $negro;
+  margin-bottom: 0.5rem;
+}
+
+.sport-desc {
+  font-size: 0.875rem;
+  color: $gris;
+  line-height: 1.6;
+}
+
+// ─── Evento card ───
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.evento-card {
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.evento-bg {
+  @include cover-absolute;
+  @include flex-center;
+  font-size: 5rem;
+
+  // Temas de eventos
+  &.sunset { background: linear-gradient(160deg, #1a1a2e 0%, #7b241c 50%, #f39c12 100%); }
+  &.fiesta { background: linear-gradient(160deg, #0d0d1a 0%, #4a235a 50%, #8e44ad 100%); }
+  &.torneo { background: linear-gradient(160deg, #0a2e1a 0%, #1e6b35 50%, #27ae60 100%); }
+}
+
+.evento-overlay {
+  @include cover-absolute;
+  background: linear-gradient(to top, alpha(#000, 0.9) 0%, transparent 60%);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.evento-tag {
+  @include badge-pill($dorado, $negro);
+  margin-bottom: 0.8rem;
+  align-self: flex-start;
+}
+
+.evento-title {
+  @include font-display;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.evento-date {
+  font-size: 0.85rem;
+  color: alpha(white, 0.6);
+  margin-bottom: 1rem;
+}
+
+// ─── Colonia features (Mini-cards con glassmorphism) ───
+.colonia-feat {
+  background: alpha(white, 0.08);
+  border: 1px solid alpha(white, 0.12);
+  border-radius: $border-radius-md;
+  padding: 1.2rem;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+
+  &:hover {
+    background: alpha(white, 0.14);
+  }
+}
+
+.feat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.feat-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.3rem;
+}
+
+.feat-desc {
+  font-size: 0.8rem;
+  color: alpha(white, 0.6);
+}
+
+// ─── Booking info box ───
+.booking-info-box {
+  background: $crema;
+  border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid $dorado;
+
+  h4 {
+    @include font-display;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: $verde;
+  }
+
+  p {
+    color: $gris;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}

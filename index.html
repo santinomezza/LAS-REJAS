@@ -202,8 +202,8 @@
                             para jugar con amigos o en torneos. Precio: $3.500/hora por cancha.</p>
                     </div>
 
-                    <!-- Calendario semanal -->
-                    <div style="background:var(--crema); border-radius:12px; padding:1.5rem;">
+                    <!-- Calendario semanal (Desktop) -->
+                    <div class="cal-desktop" style="background:var(--crema); border-radius:12px; padding:1.5rem;">
                         <div
                             style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
                             <h4 style="font-family:'Playfair Display',serif; color:var(--verde); font-size:1.1rem;">
@@ -227,6 +227,32 @@
                             </div>
                             <div class="calendar-grid" id="calendar"></div>
                         </div>
+                    </div>
+
+                    <!-- Calendario mobile (vista día a día) -->
+                    <div class="cal-mobile" style="background:var(--crema); border-radius:12px; padding:1.25rem;">
+                        <h4 style="font-family:'Playfair Display',serif; color:var(--verde); font-size:1rem; margin-bottom:1rem;">Disponibilidad — Semana actual</h4>
+
+                        <!-- Selector de días -->
+                        <div class="mobile-day-selector" id="mobile-day-selector">
+                            <button class="mday-btn active" onclick="selectMobileDay(this, 0)">Lun<br><small>31/3</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 1)">Mar<br><small>1/4</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 2)">Mié<br><small>2/4</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 3)">Jue<br><small>3/4</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 4)">Vie<br><small>4/4</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 5)">Sáb<br><small>5/4</small></button>
+                            <button class="mday-btn" onclick="selectMobileDay(this, 6)">Dom<br><small>6/4</small></button>
+                        </div>
+
+                        <!-- Leyenda -->
+                        <div style="display:flex; gap:1rem; font-size:0.72rem; color:var(--gris); margin:0.75rem 0;">
+                            <span>🟢 Libre</span>
+                            <span>🔴 Ocupado</span>
+                            <span>⭐ Seleccionado</span>
+                        </div>
+
+                        <!-- Slots del día seleccionado -->
+                        <div class="mobile-slots" id="mobile-slots"></div>
                     </div>
 
                     <!-- Formulario -->

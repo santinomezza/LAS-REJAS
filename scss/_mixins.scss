@@ -1,0 +1,176 @@
+// ═══════════════════════════════════════════════
+// _mixins.scss — Club Las Rejas
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+
+// ─── Layout ───
+
+/// Centrado flex completo
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Flex entre extremos
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/// Flex columna centrada
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/// Overlay absoluto que cubre el padre
+@mixin cover-absolute {
+  position: absolute;
+  inset: 0;
+}
+
+/// Container centrado con max-width
+@mixin container($max: $container-max) {
+  max-width: $max;
+  margin: 0 auto;
+}
+
+// ─── Tipografía ───
+
+/// Texto en mayúsculas con tracking
+/// @param {Number} $size - Tamaño de fuente
+/// @param {Number} $spacing - Letra-espaciado
+@mixin label-uppercase($size: 0.72rem, $spacing: 0.2em) {
+  font-size: $size;
+  font-weight: 600;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+}
+
+/// Fuente display (Playfair Display)
+@mixin font-display {
+  font-family: $font-display;
+}
+
+// ─── Componentización ───
+
+/// Tarjeta base con sombra
+@mixin card-base($radius: 12px) {
+  background: white;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+/// Botón base
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: $font-body;
+  font-weight: 700;
+  text-decoration: none;
+  transition: $transition-fast;
+  @include label-uppercase(0.9rem, 0.05em);
+}
+
+/// Badge tipo pill
+@mixin badge-pill($bg, $color) {
+  display: inline-block;
+  background: $bg;
+  color: $color;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+// ─── Efectos visuales ───
+
+/// Glassmorphism
+/// @param {Number} $blur - Radio de blur
+/// @param {Number} $opacity - Opacidad del fondo
+@mixin glass($opacity: 0.95, $blur: 12px) {
+  background: rgba(14, 26, 16, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+/// Gradiente principal verde
+@mixin gradient-verde {
+  background: linear-gradient(135deg, $verde 0%, $verde-claro 100%);
+}
+
+/// Overlay oscuro sobre imagen/video
+@mixin dark-overlay($opacity: 0.9) {
+  background: linear-gradient(
+    160deg,
+    rgba(9, 14, 10, $opacity) 0%,
+    rgba(21, 34, 23, 0.6) 50%,
+    rgba(9, 14, 10, $opacity * 0.95) 100%
+  );
+}
+
+// ─── Responsive ───
+
+/// Media query mobile (≤ 768px)
+@mixin mobile {
+  @media (max-width: $bp-md) { @content; }
+}
+
+/// Media query small mobile (≤ 600px)
+@mixin mobile-sm {
+  @media (max-width: $bp-sm) { @content; }
+}
+
+/// Media query tablet (≤ 1024px)
+@mixin tablet {
+  @media (max-width: $bp-xl) { @content; }
+}
+
+// ─── Scroll oculto ───
+
+/// Ocultar scrollbar pero mantener funcionalidad
+@mixin scrollbar-hidden {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ─── Funciones ───
+
+/// Rgba desde variable SCSS
+/// @param {Color} $color - Color base
+/// @param {Number} $alpha - Opacidad (0-1)
+@function alpha($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+/// Genera un tono más claro de un color
+/// @param {Color} $color - Color base
+/// @param {Number} $amount - Cantidad de aclarado
+@function tint($color, $amount: 10%) {
+  @return mix(white, $color, $amount);
+}
+
+/// Genera un tono más oscuro de un color
+/// @param {Color} $color - Color base
+/// @param {Number} $amount - Cantidad de oscurecido
+@function shade($color, $amount: 10%) {
+  @return mix(black, $color, $amount);
+}

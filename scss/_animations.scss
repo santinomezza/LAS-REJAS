@@ -1,0 +1,71 @@
+// ═══════════════════════════════════════════════
+// _animations.scss — Keyframes y fade-in
+// ═══════════════════════════════════════════════
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInPay {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// ─── Fade-in de scroll (CSS puro, no depende de JS) ───
+.fade-in {
+  animation: fadeUp 0.7s ease both;
+}
+
+// Fallback para navegadores que no soporten animations
+@supports not (animation: fadeUp 0.7s) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Compatibilidad con IntersectionObserver (usado por JS como refuerzo)
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

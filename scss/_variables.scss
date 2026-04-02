@@ -1,0 +1,73 @@
+// ═══════════════════════════════════════════════
+// _variables.scss — Club Las Rejas
+// ═══════════════════════════════════════════════
+
+// ─── Paleta de colores ───
+$verde:         #1a3a1f;
+$verde-medio:   #2d5a35;
+$verde-claro:   #4a8a55;
+$dorado:        #c9a84c;
+$dorado-claro:  #e8c97a;
+$crema:         #f5f0e8;
+$blanco:        #fafaf7;
+$negro:         #0e1a10;
+$gris:          #6b7a6e;
+$rojo:          #c0392b;
+$fondo:         #0e1a10;
+
+// ─── Colores semánticos ───
+$color-libre:           #e8f5eb;
+$color-libre-border:    #c3e6cb;
+$color-ocupado:         #fdecea;
+$color-ocupado-border:  #f5c6cb;
+$color-whatsapp:        #25D366;
+$color-mp:              #009ee3;
+
+// ─── Tipografía ───
+$font-body:    'Outfit', sans-serif;
+$font-display: 'Playfair Display', serif;
+
+// ─── Breakpoints ───
+$bp-xl:  1024px;
+$bp-md:  768px;
+$bp-sm:  600px;
+
+// ─── Espaciado base ───
+$section-padding:   5rem 2rem;
+$container-max:     1180px;
+$border-radius-sm:  6px;
+$border-radius-md:  10px;
+$border-radius-lg:  14px;
+$border-radius-xl:  16px;
+
+// ─── Z-index ───
+$z-nav:     1000;
+$z-modal:   2000;
+$z-toast:   3000;
+$z-login:   4000;
+
+// ─── Transiciones ───
+$transition-fast:   all 0.2s ease;
+$transition-mid:    all 0.3s ease;
+$transition-slow:   all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ─── Sombras ───
+$shadow-sm:   0 4px 20px rgba(0, 0, 0, 0.07);
+$shadow-md:   0 8px 30px rgba(0, 0, 0, 0.12);
+$shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.15);
+$shadow-gold: 0 8px 30px rgba(201, 168, 76, 0.15);
+
+// ─── CSS Custom Properties (para compatibilidad con JS) ───
+:root {
+  --verde:        #{$verde};
+  --verde-medio:  #{$verde-medio};
+  --verde-claro:  #{$verde-claro};
+  --dorado:       #{$dorado};
+  --dorado-claro: #{$dorado-claro};
+  --crema:        #{$crema};
+  --blanco:       #{$blanco};
+  --negro:        #{$negro};
+  --gris:         #{$gris};
+  --rojo:         #{$rojo};
+  --fondo:        #{$fondo};
+}

@@ -1,0 +1,88 @@
+// ═══════════════════════════════════════════════
+// admin/_responsive.scss — Responsive del admin
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@include tablet-admin {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include mobile-admin {
+  body {
+    flex-direction: column;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .admin-mobile-header {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    width: 280px;
+    z-index: 2500;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  .main-content {
+    padding: 1.2rem;
+    margin-top: 60px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    display: flex;
+    gap: 0.8rem;
+
+    button {
+      flex-shrink: 0;
+    }
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-wrapper {
+    margin: 0 -1.2rem;
+    padding: 1rem;
+    border-radius: 0;
+    overflow-x: auto;
+  }
+
+  .calendar-grid-header,
+  .calendar-grid {
+    grid-template-columns: 70px repeat(7, 120px);
+  }
+
+  .table-container {
+    margin: 0 -1.2rem;
+    padding: 0 1.2rem;
+    width: calc(100% + 2.4rem);
+  }
+}

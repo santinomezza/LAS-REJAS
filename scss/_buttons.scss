@@ -1,0 +1,186 @@
+// ═══════════════════════════════════════════════
+// _buttons.scss — Botones y CTAs
+// ═══════════════════════════════════════════════
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Botón primario (dorado) ───
+.btn-primary {
+  @include btn-base;
+  background: $dorado;
+  color: $negro;
+  padding: 0.85rem 2rem;
+  border-radius: 5px;
+
+  &:hover {
+    background: $dorado-claro;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ─── Botón outline ───
+.btn-outline {
+  border: 1px solid $dorado;
+  background: transparent;
+  color: $dorado;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: $transition-mid;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-family: $font-body;
+
+  &:hover {
+    background: alpha($dorado, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+// ─── Botón hero outline (fondo transparente sobre video) ───
+.btn-outline-hero {
+  border: 2px solid alpha($crema, 0.4);
+  color: $crema;
+  padding: 0.85rem 2rem;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    border-color: $dorado;
+    color: $dorado;
+    transform: translateY(-2px);
+  }
+}
+
+// ─── Link de deporte (arrow CTA) ───
+.sport-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: $verde-medio;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: gap 0.2s;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  &:hover {
+    gap: 0.7rem;
+  }
+}
+
+// ─── CTA de nav ───
+.nav-cta {
+  background: $dorado;
+  color: $negro;
+  padding: 0.5rem 1.3rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $dorado-claro;
+  }
+}
+
+// ─── WhatsApp button ───
+.whatsapp-btn {
+  background: $color-whatsapp;
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: color.adjust($color-whatsapp, $lightness: -8%);
+  }
+}
+
+// ─── Botón de evento (glassmorphism) ───
+.evento-cta {
+  background: alpha(white, 0.15);
+  border: 1px solid alpha(white, 0.3);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  cursor: pointer;
+  transition: $transition-fast;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: $dorado;
+    color: $negro;
+    border-color: $dorado;
+  }
+}
+
+// ─── Map button ───
+.map-btn {
+  background: $dorado;
+  color: $negro;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $dorado-claro;
+  }
+}
+
+// ─── Mercado Pago link ───
+.mp-btn-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: $color-mp;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+  text-align: center;
+
+  &:hover {
+    background: color.adjust($color-mp, $lightness: -10%);
+    color: white;
+  }
+}

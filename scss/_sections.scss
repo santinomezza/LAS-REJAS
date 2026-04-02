@@ -1,0 +1,182 @@
+// ═══════════════════════════════════════════════
+// _sections.scss — Secciones del sitio
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── #deportes ───
+#deportes {
+  background: $crema;
+}
+
+// ─── #turnos ───
+#turnos {
+  background: white;
+  overflow-x: hidden; // Contención global de la sección
+}
+
+// ─── #eventos ───
+#eventos {
+  background: $negro;
+
+  .section-title  { color: $crema; }
+  .section-tag    { color: $dorado-claro; }
+  .section-subtitle { color: alpha($crema, 0.55); }
+}
+
+// ─── #colonia ───
+#colonia {
+  background: linear-gradient(160deg, #0b2e45 0%, #1a5276 100%);
+
+  .section-title    { color: $crema; }
+  .section-tag      { color: #7ec8e3; }
+  .section-subtitle { color: alpha($crema, 0.6); }
+}
+
+.colonia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.colonia-info {
+  color: white;
+}
+
+.colonia-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+// ─── Colonia card (inscripción) ───
+.colonia-card {
+  background: white;
+  border-radius: $border-radius-xl;
+  padding: 2rem;
+  color: $negro;
+
+  h3 {
+    @include font-display;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #1a5276;
+  }
+}
+
+.turno-option {
+  background: #f0f8ff;
+  border-radius: $border-radius-md;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 0.8rem;
+  @include flex-between;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: $transition-fast;
+
+  &:hover,
+  &.selected {
+    border-color: #1a5276;
+    background: #e8f4fd;
+  }
+}
+
+.turno-time {
+  font-weight: 700;
+  color: #1a5276;
+  font-size: 1rem;
+}
+
+.turno-label {
+  font-size: 0.82rem;
+  color: $gris;
+}
+
+.turno-price {
+  @include font-display;
+  font-size: 1.3rem;
+  color: #1a5276;
+  font-weight: 700;
+}
+
+// ─── #contacto ───
+#contacto {
+  background: $crema;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info h3 {
+  @include font-display;
+  font-size: 1.8rem;
+  color: $negro;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  background: $verde;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: $border-radius-sm + 4px;
+  @include flex-center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  font-size: 0.9rem;
+  color: $gris;
+  line-height: 1.6;
+
+  strong {
+    display: block;
+    color: $negro;
+    font-weight: 600;
+  }
+}
+
+// ─── Map placeholder ───
+.map-placeholder {
+  background: $verde;
+  border-radius: $border-radius-xl;
+  height: 320px;
+  @include flex-column-center;
+  gap: 1rem;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+
+  // Patrón decorativo SVG
+  &::before {
+    content: '';
+    @include cover-absolute;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+.map-icon {
+  font-size: 3rem;
+}
+
+.map-placeholder p {
+  color: alpha(white, 0.8);
+  line-height: 1.6;
+}

@@ -1,0 +1,81 @@
+// ═══════════════════════════════════════════════
+// _footer.scss — Pie de página
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+footer {
+  background: $negro;
+  padding: 3rem 2rem 2rem;
+  color: alpha($crema, 0.6);
+}
+
+.footer-inner {
+  @include container;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand {
+  .nav-logo { font-size: 1.8rem; }
+
+  p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-top: 1rem;
+    color: alpha($crema, 0.5);
+  }
+}
+
+.footer-col {
+  h5 {
+    color: $dorado;
+    @include label-uppercase(0.8rem, 0.1em);
+    margin-bottom: 1.2rem;
+  }
+
+  ul { list-style: none; }
+
+  li { margin-bottom: 0.6rem; }
+
+  a {
+    color: alpha($crema, 0.55);
+    text-decoration: none;
+    font-size: 0.87rem;
+    transition: color 0.2s;
+
+    &:hover { color: $dorado; }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid alpha(white, 0.08);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: alpha($crema, 0.3);
+}
+
+// ─── Social links ───
+.social-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: alpha(white, 0.08);
+  @include flex-center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $dorado;
+  }
+}

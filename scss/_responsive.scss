@@ -1,0 +1,377 @@
+// ═══════════════════════════════════════════════
+// _responsive.scss — Media queries
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Tablet (≤ 1024px) ───
+@include tablet {
+  .hero-title {
+    font-size: 5rem;
+  }
+
+  .hero-stats {
+    gap: 2rem;
+  }
+}
+
+// ════════════════════════════════════════════════
+// Mobile (≤ 768px)
+// ════════════════════════════════════════════════
+@include mobile {
+
+  // ─── Nav ───
+  #navbar {
+    padding: 0 1.5rem;
+    height: 70px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    @include glass(0.95, 15px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 3rem;
+    gap: 2rem;
+    transition: $transition-slow;
+    z-index: $z-nav;
+    box-shadow: -15px 0 40px alpha(#000, 0.6);
+    border-left: 1px solid alpha(white, 0.05);
+
+    &.active {
+      right: 0;
+    }
+
+    li {
+      width: 100%;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: 0.3s ease;
+    }
+
+    &.active li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &.active li:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    &.active li:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+
+    &.active li:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    &.active li:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+
+    &.active li:nth-child(5) {
+      transition-delay: 0.5s;
+    }
+
+    a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: $font-display;
+      color: $crema;
+    }
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: $z-nav + 1;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  // ─── Hero ───
+  .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .hero-stats {
+    display: none;
+  }
+
+  // ════════════════════════════════════════════════
+  // BOOKING SECTION — Rediseño mobile completo
+  // ════════════════════════════════════════════════
+
+  #turnos {
+    padding: 0; // Eliminamos el padding de section para control total
+  }
+
+  // Stack vertical completo, sin gap para aspecto "nativo"
+  .booking-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    overflow: hidden; // Blindaje principal
+  }
+
+  // ─── Sidebar → Header compacto en mobile ───
+  .booking-sidebar {
+    position: static;
+    border-radius: 0;
+    padding: 1.5rem 1.25rem 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  }
+
+  // ─── Sport selector → Grid 3 columnas (sin overflow-x) ───
+  .sport-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    width: 100%;
+    overflow: visible; // No scroll, todo entra en grid
+  }
+
+  .sport-btn {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.75rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    min-width: 0;
+    background: alpha(white, 0.06);
+    border: 1.5px solid alpha(white, 0.12);
+
+    &.active {
+      background: $dorado;
+      color: $negro;
+      border-color: $dorado;
+      transform: scale(1.03);
+    }
+  }
+
+  .sport-btn-icon {
+    font-size: 1.4rem;
+  }
+
+  .sport-btn-name {
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  // ─── Área principal → contenida al 100% ───
+  .booking-main {
+    padding: 1.25rem;
+    background: #f8f8f5;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 1rem;
+  }
+
+  // ─── Info box ───
+  .booking-info-box {
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // ─── Calendar wrapper → sin márgenes negativos ───
+  .calendar-wrapper {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+  }
+
+  // Ocultar desktop calendar, mostrar mobile
+  .cal-desktop {
+    display: none !important;
+  }
+
+  .cal-mobile {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  // ─── Mobile day selector ───
+  // Sigue con overflow-x pero contiene en padding, no margin negativo
+  .mobile-day-selector {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.5rem;
+    background: white;
+    border-radius: 10px 10px 0 0;
+    box-sizing: border-box;
+    // El contenedor ya maneja el overflow
+    overflow-x: auto;
+    scroll-padding: 0 0.5rem;
+  }
+
+  // ─── Slots mobile ───
+  #mobile-slots {
+    padding: 0.5rem 0.75rem 1rem;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-slot-row {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // ─── Formulario de reserva ───
+  .booking-form {
+    padding: 1.25rem;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // ─── Resto del layout ───
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .colonia-grid,
+  .contacto-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .colonia-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+// ════════════════════════════════════════════════
+// Mobile pequeño (≤ 600px)
+// ════════════════════════════════════════════════
+@include mobile-sm {
+  nav {
+    padding: 0 1.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .colonia-features {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-text {
+    text-align: center;
+  }
+
+  // ─── Booking small ───
+  .sport-selector {
+    grid-template-columns: repeat(3, 1fr); // Mantiene 3 cols incluso en 375px
+    gap: 0.4rem;
+  }
+
+  .sport-btn {
+    padding: 0.6rem 0.25rem;
+    border-radius: 8px;
+  }
+
+  .sport-btn-icon {
+    font-size: 1.2rem;
+  }
+
+  .sport-btn-name {
+    font-size: 0.6rem;
+  }
+}

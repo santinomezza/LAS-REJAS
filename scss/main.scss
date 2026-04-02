@@ -1,0 +1,43 @@
+// ═══════════════════════════════════════════════════════════════
+// main.scss — Punto de entrada principal
+// Compila → style.css
+//
+// Orden de importación:
+//   1. Variables y mixins (sin output CSS)
+//   2. Base y reset
+//   3. Animaciones
+//   4. Tipografía y layout general
+//   5. Componentes (de más general a más específico)
+//   6. Secciones de la página
+//   7. Responsive (siempre al final)
+// ═══════════════════════════════════════════════════════════════
+
+// ─── 1. Fundamentos (sin output CSS directo) ───
+@use 'variables';
+@use 'mixins';
+
+// ─── 2. Reset y base global ───
+@use 'base';
+
+// ─── 3. Animaciones y keyframes ───
+@use 'animations';
+
+// ─── 4. Tipografía, secciones generales y container ───
+@use 'typography';
+
+// ─── 5. Componentes ───
+@use 'buttons';
+@use 'nav';
+@use 'hero';
+@use 'cards';
+@use 'booking';
+@use 'calendar';
+@use 'forms';
+@use 'modal';
+@use 'footer';
+
+// ─── 6. Secciones de página ───
+@use 'sections';
+
+// ─── 7. Responsive (SIEMPRE AL FINAL) ───
+@use 'responsive';

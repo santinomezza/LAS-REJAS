@@ -1,0 +1,122 @@
+// ═══════════════════════════════════════════════
+// _hero.scss — Sección hero principal
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+#hero {
+  height: 100vh;
+  min-height: 650px;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+}
+
+// ─── Video de fondo ───
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+// ─── Overlay oscuro ───
+.hero-overlay {
+  @include cover-absolute;
+  @include dark-overlay(0.95);
+  z-index: 2;
+}
+
+// ─── Contenido centrado ───
+.hero-content {
+  position: relative;
+  text-align: center;
+  padding: 0 2rem;
+  z-index: 10;
+}
+
+// ─── Badge de ubicación ───
+.hero-badge {
+  display: inline-block;
+  border: 1px solid alpha($dorado, 0.5);
+  color: $dorado;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  animation: fadeDown 0.8s ease both;
+}
+
+// ─── Título principal ───
+.hero-title {
+  @include font-display;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: $crema;
+  animation: fadeDown 0.8s 0.15s ease both;
+
+  em {
+    font-style: italic;
+    color: $dorado;
+    display: block;
+  }
+}
+
+// ─── Subtítulo ───
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: alpha($crema, 0.65);
+  max-width: 500px;
+  margin: 1.5rem auto 2.5rem;
+  line-height: 1.6;
+  font-weight: 300;
+  animation: fadeDown 0.8s 0.3s ease both;
+}
+
+// ─── Botones CTA ───
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeDown 0.8s 0.45s ease both;
+}
+
+// ─── Stats en la parte inferior ───
+.hero-stats {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4rem;
+  animation: fadeUp 0.8s 0.6s ease both;
+  z-index: 10;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  @include font-display;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: $dorado;
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  @include label-uppercase(0.7rem, 0.1em);
+  color: alpha($crema, 0.5);
+  margin-top: 0.3rem;
+}

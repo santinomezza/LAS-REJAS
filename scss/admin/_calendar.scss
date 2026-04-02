@@ -1,0 +1,72 @@
+// ═══════════════════════════════════════════════
+// admin/_calendar.scss — Calendario del admin
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.calendar-wrapper {
+  background: #fdfaf5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  color: #2c3e50;
+}
+
+.calendar-grid-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.cal-day-header {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #7f8c8d;
+  padding: 0.5rem 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-time-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #95a5a6;
+  @include flex-center;
+}
+
+.cal-slot-admin {
+  border-radius: 6px;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-height: 40px;
+  @include flex-center;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+
+  &.libre {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+  }
+
+  &.ocupado {
+    background: #ffebee;
+    color: #c62828;
+    border-color: #ffcdd2;
+    cursor: pointer;
+
+    &:hover {
+      background: #ffcdd2;
+      transform: translateY(-2px);
+    }
+  }
+}

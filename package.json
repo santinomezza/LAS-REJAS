@@ -1,0 +1,26 @@
+{
+  "name": "las-rejas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin.js",
+  "scripts": {
+    "sass": "sass --no-source-map scss/main.scss:style.css scss/admin.scss:admin.css",
+    "sass:watch": "sass --no-source-map --watch scss/main.scss:style.css scss/admin.scss:admin.css",
+    "build": "sass --no-source-map --style=compressed scss/main.scss:style.css scss/admin.scss:admin.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santinomezza/LAS-REJAS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/santinomezza/LAS-REJAS/issues"
+  },
+  "homepage": "https://github.com/santinomezza/LAS-REJAS#readme",
+  "devDependencies": {
+    "sass": "^1.98.0"
+  }
+}

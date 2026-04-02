@@ -1,0 +1,41 @@
+// ═══════════════════════════════════════════════
+// admin/_variables.scss — Variables del panel admin
+// ═══════════════════════════════════════════════
+
+// ─── Colores del tema dark ───
+$bg-dark:           #090e0a;
+$sidebar-bg:        #0e1a10;
+$card-bg:           #152217;
+$text-main:         #f5f0e8;
+$text-muted:        #6b7a6e;
+$accent-green:      #2ecc71;
+$accent-green-soft: rgba(46, 204, 113, 0.15);
+$accent-gold:       #c9a84c;
+$accent-gold-soft:  rgba(201, 168, 76, 0.15);
+$accent-red:        #e74c3c;
+$accent-yellow:     #f1c40f;
+$border:            rgba(255, 255, 255, 0.05);
+
+// ─── Fuente ───
+$font-body:    'Outfit', sans-serif;
+$font-display: 'Playfair Display', serif;
+
+// ─── Breakpoints ───
+$bp-xl: 1024px;
+$bp-md: 768px;
+
+// ─── CSS Custom Properties ───
+:root {
+  --bg-dark:           #{$bg-dark};
+  --sidebar-bg:        #{$sidebar-bg};
+  --card-bg:           #{$card-bg};
+  --text-main:         #{$text-main};
+  --text-muted:        #{$text-muted};
+  --accent-green:      #{$accent-green};
+  --accent-green-soft: #{$accent-green-soft};
+  --accent-gold:       #{$accent-gold};
+  --accent-gold-soft:  #{$accent-gold-soft};
+  --accent-red:        #{$accent-red};
+  --accent-yellow:     #{$accent-yellow};
+  --border:            #{$border};
+}

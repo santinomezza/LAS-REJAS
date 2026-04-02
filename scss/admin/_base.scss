@@ -1,0 +1,21 @@
+// ═══════════════════════════════════════════════
+// admin/_base.scss — Base del panel admin
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $bg-dark;
+  color: $text-main;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}

@@ -119,6 +119,92 @@ function buildCalendar() {
             container.appendChild(slot);
         });
     });
+
+    // Actualizar vista mobile también
+    buildMobileCalendar();
+}
+
+// ─── CALENDARIO MOBILE (vista día a día) ───
+let mobileSelectedDayIndex = 0;
+
+function buildMobileCalendar() {
+    const container = document.getElementById('mobile-slots');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const sportNameMap = {
+        'padel': 'Pádel', 'tenis': 'Tenis', 'natacion': 'Natación',
+        'futbol': 'Fútbol', 'clases_padel': 'Pádel', 'clases_tenis': 'Tenis'
+    };
+
+    Object.entries(availability).forEach(([time, slots]) => {
+        const dayStr = days[mobileSelectedDayIndex];
+        const libre = slots[mobileSelectedDayIndex];
+
+        const isBlocked = blocks.some(b => {
+            return b.hora === time && b.fecha === dayStr &&
+                   (b.deporte === 'Todos' || b.deporte === sportNameMap[selectedSport]);
+        });
+
+        const finalLibre = libre && !isBlocked;
+        const isSelected = selectedSlot && selectedSlot.time === time && selectedSlot.day === dayStr;
+
+        const row = document.createElement('div');
+        row.className = 'mobile-slot-row ' + (isSelected ? 'seleccionado' : (finalLibre ? 'libre' : 'ocupado'));
+
+        row.innerHTML = `
+            <span class="mslot-time">${time}</span>
+            <span class="mslot-label">${finalLibre ? 'Disponible' : (isBlocked ? 'No disponible' : 'Ocupado')}</span>
+            <span class="mslot-badge ${isSelected ? 'sel' : (finalLibre ? 'libre' : 'ocupado')}">
+                ${isSelected ? '⭐ Elegido' : (finalLibre ? '🟢 Libre' : '🔴 Ocupado')}
+            </span>
+        `;
+
+        if (finalLibre && !isSelected) {
+            row.style.cursor = 'pointer';
+            row.onclick = () => selectSlotMobile(row, time, dayStr);
+        }
+
+        container.appendChild(row);
+    });
+}
+
+function selectSlotMobile(el, time, day) {
+    // Deseleccionar slot anterior en mobile
+    document.querySelectorAll('.mobile-slot-row.seleccionado').forEach(r => {
+        r.classList.remove('seleccionado');
+        r.classList.add('libre');
+        r.querySelector('.mslot-label').textContent = 'Disponible';
+        const badge = r.querySelector('.mslot-badge');
+        badge.className = 'mslot-badge libre';
+        badge.textContent = '🟢 Libre';
+    });
+
+    el.classList.remove('libre');
+    el.classList.add('seleccionado');
+    el.querySelector('.mslot-label').textContent = 'Tu turno seleccionado';
+    const badge = el.querySelector('.mslot-badge');
+    badge.className = 'mslot-badge sel';
+    badge.textContent = '⭐ Elegido';
+
+    selectedSlot = { time, day };
+
+    const sport = sportInfo[selectedSport];
+    document.getElementById('selected-slot-info').textContent = `📅 ${day} a las ${time} hs — ${sport.title.split('—')[0].trim()}`;
+
+    const form = document.getElementById('booking-form');
+    form.style.display = 'block';
+    updatePaymentUI();
+    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function selectMobileDay(btn, dayIndex) {
+    document.querySelectorAll('.mday-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    mobileSelectedDayIndex = dayIndex;
+    selectedSlot = null;
+    document.getElementById('booking-form').style.display = 'none';
+    buildMobileCalendar();
 }
 
 function selectSlot(el, time, day) {
@@ -512,8 +598,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ─── NAVEGACIÓN MOBILE ───
+function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    links.classList.toggle('active');
+    hamburger.classList.toggle('active');
+}
+
 // ─── EXPOSICIÓN GLOBAL ───
-window.selectSport = selectSport;
+window.toggleMenu = toggleMenu;
 window.confirmarReserva = confirmarReserva;
 window.scrollToTurnos = scrollToTurnos;
 window.openCarta = openCarta;
@@ -524,3 +618,5 @@ window.closeModal = closeModal;
 window.toggleMenu = toggleMenu;
 window.togglePaymentDetails = togglePaymentDetails;
 window.updatePaymentUI = updatePaymentUI;
+window.selectMobileDay = selectMobileDay;
+window.selectSport = selectSport;

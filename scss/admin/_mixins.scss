@@ -1,0 +1,30 @@
+// ═══════════════════════════════════════════════
+// admin/_mixins.scss — Mixins del admin
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin card-dark($radius: 12px) {
+  background: $card-bg;
+  border: 1px solid $border;
+  border-radius: $radius;
+}
+
+@mixin mobile-admin {
+  @media (max-width: $bp-md) { @content; }
+}
+
+@mixin tablet-admin {
+  @media (max-width: $bp-xl) { @content; }
+}

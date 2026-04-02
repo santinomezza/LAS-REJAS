@@ -862,10 +862,37 @@ function renderNotifications() {
     }).join('');
 }
 
+// ─── NAVEGACIÓN MOBILE ───
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.toggle('active');
+}
+
+function navigateTo(sectionId, title = "") {
+    // Cerrar sidebar en mobile si está abierto
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar && window.innerWidth <= 768) {
+        sidebar.classList.remove('active');
+    }
+
+    document.querySelectorAll('.admin-section').forEach(s => s.style.display = 'none');
+    const target = document.getElementById(sectionId);
+    if (target) target.style.display = 'block';
+
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector(`[data-nav="${sectionId}"]`);
+    if (activeLink) activeLink.classList.add('active');
+
+    if (title) {
+        document.getElementById('section-title-active').textContent = title;
+    }
+}
+
 // ─── EXPOSICIÓN GLOBAL ───
 window.login = login;
 window.logout = logout;
 window.navigateTo = navigateTo;
+window.toggleSidebar = toggleSidebar;
 window.enviarReporteDiario = enviarReporteDiario;
 window.exportData = exportData;
 window.deleteBooking = deleteBooking;

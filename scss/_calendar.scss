@@ -1,0 +1,205 @@
+// ═══════════════════════════════════════════════
+// _calendar.scss — Calendario de disponibilidad
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Wrapper del calendario ───
+.calendar-wrapper {
+  border-radius: 12px;
+  overflow: hidden;   // Fundamental: contiene la grilla interior
+  position: relative;
+  width: 100%;
+}
+
+// ─── Vista Desktop (tabla 7 días) ───
+.cal-desktop { display: block; }
+.cal-mobile  { display: none; }
+
+// Header de días
+.calendar-grid-header {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.cal-day-header {
+  text-align: center;
+  @include label-uppercase(0.72rem, 0.08em);
+  color: $gris;
+  padding: 0.5rem 0;
+}
+
+// Grilla de slots
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-time {
+  font-size: 0.75rem;
+  color: $gris;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+// ─── Slots del calendario ───
+.cal-slot {
+  border-radius: $border-radius-sm;
+  padding: 0.4rem;
+  text-align: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: $transition-fast;
+  min-height: 38px;
+  @include flex-center;
+  font-weight: 500;
+
+  &.libre {
+    background: $color-libre;
+    color: $verde-medio;
+    border: 1px solid $color-libre-border;
+
+    &:hover {
+      background: $verde-medio;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  &.ocupado {
+    background: $color-ocupado;
+    color: $rojo;
+    border: 1px solid $color-ocupado-border;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &.seleccionado {
+    background: $dorado;
+    color: $negro;
+    border: 1px solid $dorado;
+    transform: scale(1.05);
+    font-weight: 700;
+  }
+}
+
+// ─── Vista Mobile: selector de días ───
+.mobile-day-selector {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  @include scrollbar-hidden;
+}
+
+.mday-btn {
+  flex: 0 0 auto;
+  background: white;
+  border: 1.5px solid #ddd;
+  border-radius: $border-radius-md;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $gris;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.3;
+  transition: $transition-fast;
+  font-family: $font-body;
+
+  small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.65rem;
+    color: #aaa;
+  }
+
+  &:hover {
+    border-color: $verde-claro;
+    color: $verde;
+  }
+
+  &.active {
+    background: $verde;
+    border-color: $verde;
+    color: white;
+
+    small { color: alpha(white, 0.7); }
+  }
+}
+
+// ─── Filas de slots en mobile ───
+.mobile-slot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: $border-radius-md;
+  margin-bottom: 0.5rem;
+  border: 1.5px solid transparent;
+  transition: $transition-fast;
+
+  &.libre {
+    background: $color-libre;
+    border-color: $color-libre-border;
+
+    &:hover {
+      background: $verde-medio;
+      border-color: $verde-medio;
+
+      .mslot-label,
+      .mslot-time  { color: white !important; }
+
+      .mslot-badge {
+        background: alpha(white, 0.25);
+        color: white;
+      }
+    }
+  }
+
+  &.ocupado {
+    background: $color-ocupado;
+    border-color: $color-ocupado-border;
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &.seleccionado {
+    background: $dorado;
+    border-color: $dorado;
+
+    .mslot-label,
+    .mslot-time { color: $negro !important; }
+  }
+}
+
+.mslot-time {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: $verde;
+  min-width: 52px;
+}
+
+.mslot-label {
+  flex: 1;
+  font-size: 0.82rem;
+  color: $gris;
+  padding: 0 0.75rem;
+}
+
+.mslot-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+
+  &.libre   { background: alpha($verde-medio, 0.12); color: $verde-medio; }
+  &.ocupado { background: alpha($rojo, 0.12);        color: $rojo; }
+  &.sel     { background: alpha($negro, 0.12);        color: $negro; }
+}

@@ -1,0 +1,22 @@
+// ═══════════════════════════════════════════════════════════════
+// admin.scss — Punto de entrada del panel admin
+// Compila → admin.css
+// ═══════════════════════════════════════════════════════════════
+
+// ─── 1. Fundamentos ───
+@use 'admin/variables';
+@use 'admin/mixins';
+
+// ─── 2. Base ───
+@use 'admin/base';
+
+// ─── 3. Componentes ───
+@use 'admin/sidebar';
+@use 'admin/layout';
+@use 'admin/cards';
+@use 'admin/table';
+@use 'admin/modal';
+@use 'admin/calendar';
+
+// ─── 4. Responsive (SIEMPRE AL FINAL) ───
+@use 'admin/responsive';

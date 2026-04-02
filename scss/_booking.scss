@@ -1,0 +1,96 @@
+// ═══════════════════════════════════════════════
+// _booking.scss — Sistema de reservas
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Sección contenedora ───
+#turnos {
+  background: white;
+  overflow-x: hidden; // Blindaje contra desborde
+}
+
+// ─── Layout principal (desktop: sidebar + main) ───
+.booking-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+  // Asegura que nunca exceda el container
+  max-width: 100%;
+  overflow: hidden;
+}
+
+// ─── Sidebar de selección de deporte ───
+.booking-sidebar {
+  background: $verde;
+  border-radius: $border-radius-lg;
+  padding: 2rem;
+  color: white;
+  position: sticky;
+  top: 90px;
+  // Evita overflow interno
+  overflow: hidden;
+
+  h3 {
+    @include font-display;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: $dorado;
+  }
+}
+
+// ─── Lista de deportes (desktop: columna) ───
+.sport-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sport-btn {
+  background: alpha(white, 0.08);
+  border: 1px solid alpha(white, 0.15);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: $transition-fast;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%; // Previene desborde
+
+  &:hover,
+  &.active {
+    background: $dorado;
+    color: $negro;
+    border-color: $dorado;
+  }
+}
+
+// ─── Área principal de reserva ───
+.booking-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0; // Crucial: permite que el flex/grid se comprima
+  overflow: hidden;
+}
+
+// ─── Formulario ───
+.booking-form {
+  background: white;
+  border: 1px solid #e8e8e0;
+  border-radius: 12px;
+  padding: 2rem;
+
+  h4 {
+    @include font-display;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: $verde;
+  }
+}

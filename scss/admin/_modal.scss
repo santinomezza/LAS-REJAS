@@ -1,0 +1,110 @@
+// ═══════════════════════════════════════════════
+// admin/_modal.scss — Modales y login del admin
+// ═══════════════════════════════════════════════
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Modal overlay ───
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 3000;
+  @include flex-center;
+}
+
+// ─── Modal contenido ───
+.admin-modal {
+  @include card-dark(16px);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+
+  h3 {
+    margin-bottom: 1.5rem;
+    color: $accent-gold;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    color: $text-muted;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $border;
+    border-radius: 8px;
+    color: white;
+    font-family: $font-body;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+// ─── Login ───
+#login-overlay {
+  position: fixed;
+  inset: 0;
+  background: $bg-dark;
+  z-index: 4000;
+  @include flex-center;
+}
+
+.login-card {
+  @include card-dark(16px);
+  padding: 3rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+
+  h2 {
+    font-family: $font-display;
+    margin-bottom: 2rem;
+    color: $accent-gold;
+  }
+}
+
+.login-form {
+  input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $border;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-family: $font-body;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    background: $accent-green;
+    color: $bg-dark;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
